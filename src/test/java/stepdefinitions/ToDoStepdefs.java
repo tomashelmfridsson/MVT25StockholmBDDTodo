@@ -1,12 +1,14 @@
 package stepdefinitions;
 
-
+import io.cucumber.java.After;
 import io.cucumber.java.PendingException;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import todo.TodoList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ToDoStepdefs {
     private TodoList todoList;
@@ -29,14 +31,19 @@ public class ToDoStepdefs {
     }
 
     @When("I complete task {int} as done")
-    public void iCompleteTaskAsDone(int arg0) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+    public void iCompleteTaskAsDone(int index) {
+        todoList.completeTask(index);
     }
 
     @Then("I get {int} number of completed tasks")
-    public void iGetNumberOfCompletedTasks(int arg0) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+    public void iGetNumberOfCompletedTasks(int index) {
+        boolean expected = true;
+        boolean actual = todoList.isTaskFinished(index);
+    }
+
+    @And("I have task {int} finished")
+    public void iHaveTaskFinished(int index) {
+        assertTrue(todoList.isTaskFinished(index));
+
     }
 }
