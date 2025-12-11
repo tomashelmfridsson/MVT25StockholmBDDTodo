@@ -10,3 +10,4 @@ Feature: TodoList
     And I add a task with description "Betala räkningar"
     When I complete task 1 as done
     Then I get 1 number of completed tasks
+    
